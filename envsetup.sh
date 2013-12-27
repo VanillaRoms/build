@@ -15,6 +15,7 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 - gcd:      cd's to a git project in the build tree.
 - godir:    Go to the directory containing a file.
 - mka:      Builds using SCHED_BATCH on all processors
+- brunch:  brunch <product_name> [-j<X>]
 - mbot:     Builds for all devices using the psuedo buildbot
 - mkapush:  Same as mka with the addition of adb pushing to the device.
 - pstest:   cherry pick a patch from the AOKP gerrit instance.
@@ -479,7 +480,11 @@ function brunch()
 {
     breakfast $*
     if [ $? -eq 0 ]; then
-        mka bacon
+        if [ ! -z "$2" ]; then
+            time mka bacon $2
+        else
+            time mka bacon
+        fi
     else
         echo "No such item in brunch menu. Try 'breakfast'"
         return 1
@@ -1459,10 +1464,18 @@ function godir () {
 function mka() {
     case `uname -s` in
         Darwin)
-            make -j `sysctl hw.ncpu|cut -d" " -f2` "$@"
+            if [ ! -z "$2" ]; then
+                make "$@"
+            else
+                make -j $(( $(sysctl hw.ncpu|cut -d" " -f2) * 2 )) "$@"
+            fi
             ;;
         *)
-            schedtool -B -e make -j `cat /proc/cpuinfo | grep "^processor" | wc -l` "$@"
+            if [ ! -z "$2" ]; then
+                schedtool -B -e make "$@"
+            else
+                schedtool -B -e make -j "$(( $(cat /proc/cpuinfo | grep "^processor" | wc -l) * 2 ))" "$@"
+            fi
             ;;
     esac
 }
