@@ -529,9 +529,10 @@ else if get_stage("%(bcb_dev)s", "stage") == "3/3" then
     script.FormatPartition("/data")
 
   script.Print("******************************************");
-  script.Print("*      /////////////////////////////     *");
-  script.Print("*     VanillaUnicorn Build finished !    *");
-  script.Print("*          <<<<<HAVE FUN>>>>             *");
+  script.Print("*          VanillaRoms present           *");
+  script.Print("*            VanillaUnicorn              *");
+  script.Print("*                                        *");
+  script.Print("*            ROM Flash Done !            *");
   script.Print("******************************************");
 
   aokpv = GetBuildProp("ro.vu.version", OPTIONS.info_dict)
@@ -544,7 +545,7 @@ else if get_stage("%(bcb_dev)s", "stage") == "3/3" then
   else:
     build = GetBuildProp("ro.build.date", OPTIONS.info_dict)
     script.Print("******************************************");
-    script.Print("************ UNOFFICIAL BUILD ************");
+    script.Print("************ OFFICIAL BUILD ************");
     script.Print("******************************************");
     script.Print("*   Compiled: %s"%(build));
 
