@@ -530,15 +530,15 @@ else if get_stage("%(bcb_dev)s", "stage") == "3/3" then
 
   script.Print("******************************************");
   script.Print("*      /////////////////////////////     *");
-  script.Print("*     VanillaUnicorn Build finsihed !    *");
+  script.Print("*     VanillaUnicorn Build finished !    *");
   script.Print("*          <<<<<HAVE FUN>>>>             *");
   script.Print("******************************************");
 
-  aokpv = GetBuildProp("ro.aokp.version", OPTIONS.info_dict)
-  if os.getenv("AOKP_BUILD") is not None:
+  aokpv = GetBuildProp("ro.vu.version", OPTIONS.info_dict)
+  if os.getenv("VU_BUILD") is not None:
     build = ' '.join(aokpv.split('_')[3].split('-')).title()
     script.Print("*   Version: %s"%(build));
-  elif os.getenv("AOKP_NIGHTLY") is not None:
+  elif os.getenv("VU_NIGHTLY") is not None:
     build = ' '.join(aokpv.split('_')[2:]).title()
     script.Print("*   Version: %s"%(build));
   else:
