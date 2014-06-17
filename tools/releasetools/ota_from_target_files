@@ -529,14 +529,9 @@ else if get_stage("%(bcb_dev)s", "stage") == "3/3" then
     script.FormatPartition("/data")
 
   script.Print("******************************************");
-  script.Print("*    ______  _____   __  __   _____      *");
-  script.Print("*   /\\  _  \\/\\  __`\\/\\ \\/\\ \\ /\\  _ `\\    *");
-  script.Print("*   \\ \\ \\L\\ \\ \\ \\/\\ \\ \\ \\/'/'\\ \\ \\L\\ \\   *");
-  script.Print("*    \\ \\  __ \\ \\ \\ \\ \\ \\ , <  \\ \\ ,__/   *");
-  script.Print("*     \\ \\ \\/\\ \\ \\ \\_\\ \\ \\ \\\\\\`\\ \\ \\ \\/    *");
-  script.Print("*      \\ \\_\\ \\_\\ \\_____\\ \\_\\ \\_\\\\\\ \\_\\    *");
-  script.Print("*       \\/_/\\/_/\\/_____/\\/_/\\/_/ \\/_/    *");
-  script.Print("*                                        *");
+  script.Print("*      /////////////////////////////     *");
+  script.Print("*     VanillaUnicorn Build finsihed !    *");
+  script.Print("*          <<<<<HAVE FUN>>>>             *");
   script.Print("******************************************");
 
   aokpv = GetBuildProp("ro.aokp.version", OPTIONS.info_dict)
